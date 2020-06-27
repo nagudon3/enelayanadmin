@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/list_style"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/sImage"
+        android:background="@drawable/logo"
+        />
+
+    <TextView
+        android:id="@+id/sName"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="7dp"
+        android:layout_toEndOf="@+id/sImage"
+        android:layout_toRightOf="@+id/sImage"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/sSource"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/sName"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="1dp"
+        android:layout_toEndOf="@+id/sImage"
+        android:layout_toRightOf="@+id/sImage"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/detailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:text="Review" />
+
+</RelativeLayout>
