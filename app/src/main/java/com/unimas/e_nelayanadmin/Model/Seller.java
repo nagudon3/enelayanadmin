@@ -1,6 +1,6 @@
 package com.unimas.e_nelayanadmin.Model;
 
-public class Seller {
+public class    Seller {
     private String sellerId;
     private String sellerName;
     private String sellerImage;

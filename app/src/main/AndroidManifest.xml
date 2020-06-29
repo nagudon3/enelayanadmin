@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.FishermanDetailsActivity"></activity>
+        <activity android:name=".Activity.SellerDetailsActivity"></activity>
+        <activity android:name=".Activity.FishermanDetailsActivity" />
         <activity android:name=".Activity.SellerList" />
         <activity android:name=".Activity.FishermanList" />
         <activity android:name=".Activity.HomeActivity" />

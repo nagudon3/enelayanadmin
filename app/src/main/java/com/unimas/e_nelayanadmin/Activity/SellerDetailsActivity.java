@@ -19,25 +19,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.unimas.e_nelayanadmin.Model.Fisherman;
+import com.unimas.e_nelayanadmin.Model.Seller;
 import com.unimas.e_nelayanadmin.R;
-
-import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class FishermanDetailsActivity extends AppCompatActivity {
+public class SellerDetailsActivity extends AppCompatActivity {
     private TextView fishermanName, fishermanPhone, fishermanLicenseNumber, fishingArea, address, years, approvalStatus;
     private CircleImageView fishermanImage;
     private Button approveButton, cancelButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fisherman_details);
+        setContentView(R.layout.activity_seller_details);
 
         fishermanLicenseNumber = findViewById(R.id.fishermanLicense);
         fishingArea = findViewById(R.id.fishingArea);
         address = findViewById(R.id.address);
-        years = findViewById(R.id.years);
         approvalStatus = findViewById(R.id.approval);
         fishermanName = findViewById(R.id.fishermanName);
         fishermanPhone = findViewById(R.id.fishermanPhone);
@@ -45,22 +44,20 @@ public class FishermanDetailsActivity extends AppCompatActivity {
         approveButton = findViewById(R.id.approveBtn);
         cancelButton = findViewById(R.id.cancelBtn);
 
-        String fName = getIntent().getExtras().getString("fishermanName");
+        String fName = getIntent().getExtras().getString("sellerName");
         String fPhone = getIntent().getExtras().getString("phoneNumber");
-        final String fId = getIntent().getExtras().getString("fishermanID");
-        String fImage = getIntent().getExtras().getString("fishermanImage");
-        String fLicense =getIntent().getExtras().getString("fishermanLicenseNumber");
-        String fAddress = getIntent().getExtras().getString("address");
+        final String fId = getIntent().getExtras().getString("sellerId");
+        String fImage = getIntent().getExtras().getString("sellerImage");
+        String fLicense =getIntent().getExtras().getString("sellingReason");
+        String fAddress = getIntent().getExtras().getString("sellerAddress");
         String fApproval = getIntent().getExtras().getString("approvalStatus");
-        String fYears = getIntent().getExtras().getString("years");
-        String fArea = getIntent().getExtras().getString("fishingArea");
+        String fArea = getIntent().getExtras().getString("sellingArea");
 
         Glide.with(this).load(fImage).into(fishermanImage);
 
         fishermanName.setText(fName);
         fishermanPhone.setText(fPhone);
         approvalStatus.setText(fApproval);
-        years.setText(fYears);
         fishermanLicenseNumber.setText(fLicense);
         fishingArea.setText(fArea);
         address.setText(fAddress);
@@ -69,7 +66,7 @@ public class FishermanDetailsActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FishermanDetailsActivity.this, FishermanList.class));
+                startActivity(new Intent(SellerDetailsActivity.this, SellerList.class));
             }
         });
 
@@ -77,26 +74,26 @@ public class FishermanDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                final DatabaseReference reference = database.getReference().child("Fisherman").child(fId);
+                final DatabaseReference reference = database.getReference().child("Seller").child(fId);
 
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Fisherman fisherman = dataSnapshot.getValue(Fisherman.class);
-                        fisherman.setApprovalStatus(true);
+                        Seller seller = dataSnapshot.getValue(Seller.class);
+                        seller.setApprovalStatus(true);
 
 
-                        reference.setValue(fisherman).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        reference.setValue(seller).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(FishermanDetailsActivity.this, "Request approved!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(FishermanDetailsActivity.this, FishermanList.class));
+                                Toast.makeText(SellerDetailsActivity.this, "Request approved!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SellerDetailsActivity.this, SellerList.class));
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(FishermanDetailsActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SellerDetailsActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -109,4 +106,6 @@ public class FishermanDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

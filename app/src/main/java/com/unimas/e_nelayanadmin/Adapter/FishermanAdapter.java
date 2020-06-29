@@ -65,6 +65,11 @@ public class FishermanAdapter extends RecyclerView.Adapter<FishermanAdapter.MyVi
                     Intent goToDetails = new Intent(mContext, FishermanDetailsActivity.class);
                     int position = getAdapterPosition();
 
+                    if (fishermanList.get(position).getApprovalStatus() == true){
+                        goToDetails.putExtra("approvalStatus", "Approved");
+                    }else {
+                        goToDetails.putExtra("approvalStatus", "Not Approved");
+                    }
                     goToDetails.putExtra("fishermanName", fishermanList.get(position).getFishermanName());
                     goToDetails.putExtra("fishermanImage", fishermanList.get(position).getFishermanImage());
                     goToDetails.putExtra("fishermanLicenseNumber", fishermanList.get(position).getFishermanLicenseNumber());
@@ -74,6 +79,7 @@ public class FishermanAdapter extends RecyclerView.Adapter<FishermanAdapter.MyVi
                     goToDetails.putExtra("years", fishermanList.get(position).getYears());
                     goToDetails.putExtra("phoneNumber", fishermanList.get(position).getPhoneNumber());
                     mContext.startActivity(goToDetails);
+
                 }
             });
         }

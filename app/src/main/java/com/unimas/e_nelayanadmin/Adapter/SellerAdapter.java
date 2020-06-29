@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.unimas.e_nelayanadmin.Activity.FishermanDetailsActivity;
+import com.unimas.e_nelayanadmin.Activity.SellerDetailsActivity;
 import com.unimas.e_nelayanadmin.Model.Seller;
 import com.unimas.e_nelayanadmin.R;
 
@@ -62,17 +63,23 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.SellerView
             details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent goToDetails = new Intent(mContext, FishermanDetailsActivity.class);
+                    Intent goToDetails = new Intent(mContext, SellerDetailsActivity.class);
                     int position = getAdapterPosition();
 
                     goToDetails.putExtra("sellerName", sellerList.get(position).getSellerName());
                     goToDetails.putExtra("sellerSource", sellerList.get(position).getSellingFishSource());
+                    goToDetails.putExtra("sellingArea", sellerList.get(position).getSellingArea());
                     goToDetails.putExtra("sellerAddress", sellerList.get(position).getAddress());
                     goToDetails.putExtra("sellerImage", sellerList.get(position).getSellerImage());
                     goToDetails.putExtra("sellerId", sellerList.get(position).getSellerId());
                     goToDetails.putExtra("sellingReason", sellerList.get(position).getSellingReason());
                     goToDetails.putExtra("phoneNumber", sellerList.get(position).getPhoneNumber());
-                    goToDetails.putExtra("approvalStatus", sellerList.get(position).getApprovalStatus());
+
+                    if (sellerList.get(position).getApprovalStatus()==true){
+                        goToDetails.putExtra("approvalStatus", "Approved");
+                    }else{
+                        goToDetails.putExtra("approvalStatus", "Not approved");
+                    }
                     mContext.startActivity(goToDetails);
                 }
             });

@@ -10,14 +10,21 @@
     android:paddingTop="20dp"
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
-
     <ImageView
         android:layout_width="210dp"
         android:layout_height="228dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="e-Nelayan Admin"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="23dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
