@@ -57,13 +57,13 @@ public class FishermanDetailsActivity extends AppCompatActivity {
 
         Glide.with(this).load(fImage).into(fishermanImage);
 
-        fishermanName.setText(fName);
-        fishermanPhone.setText(fPhone);
-        approvalStatus.setText(fApproval);
-        years.setText(fYears);
-        fishermanLicenseNumber.setText(fLicense);
-        fishingArea.setText(fArea);
-        address.setText(fAddress);
+        fishermanName.setText("Name: "+fName);
+        fishermanPhone.setText("Phone Number: " +fPhone);
+        approvalStatus.setText("Approval Status: " +fApproval);
+        years.setText("Year(s) as fisherman: " +fYears);
+        fishermanLicenseNumber.setText("Fisherman License Number: " +fLicense);
+        fishingArea.setText("Fishing area: "+fArea);
+        address.setText("Address: "+fAddress);
 
 
         cancelButton.setOnClickListener(new View.OnClickListener() {

@@ -17,143 +17,65 @@
         android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name: "
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:id="@+id/nameTag"/>
-
-        <TextView
             android:id="@+id/fishermanName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="Nazrul"
+            android:layout_marginTop="20dp"
             android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Phone Number :"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:id="@+id/phoneTag"/>
 
         <TextView
             android:id="@+id/fishermanPhone"
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toEndOf="@+id/phoneTag"
-            android:layout_toRightOf="@+id/phoneTag"
+            android:layout_marginTop="20dp"
             android:text="01230312312"
             android:textSize="17dp" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Fisherman License Number: "
-            android:textSize="17dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:id="@+id/fishermanLicenseTag"/>
-
-        <TextView
             android:id="@+id/fishermanLicense"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/nameTag"
-            android:layout_toRightOf="@+id/nameTag"
             android:text="111G992b123c"
+            android:layout_marginTop="20dp"
             android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fishing area: "
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:id="@+id/fishingAreaTag"/>
 
         <TextView
             android:id="@+id/fishingArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="Kota Samarahan"
+            android:layout_marginTop="20dp"
             android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Address: "
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:id="@+id/addressTag"/>
 
         <TextView
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginTop="20dp"
             android:text="Nazrul"
             android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Year(s) as fisherman: "
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:id="@+id/yearsTag"/>
 
         <TextView
             android:id="@+id/years"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="2 years"
-            android:gravity="center"
             android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Approval Status: "
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:id="@+id/approvalTag"/>
 
         <TextView
             android:id="@+id/approval"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginTop="20dp"
             android:text="Approved"
             android:textSize="17dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         >
 
         <Button
