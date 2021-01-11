@@ -46,20 +46,18 @@
             android:layout_below="@+id/fName"
             android:layout_toEndOf="@+id/fImage"
             android:layout_toRightOf="@+id/fImage"
+            app:layout_constraintHorizontal_bias="0.06"
             android:gravity="center_vertical"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintEnd_toStartOf="@id/detailsButton"
             app:layout_constraintStart_toEndOf="@+id/fImage"
-            app:layout_constraintTop_toBottomOf="@+id/fName"
-            app:layout_constraintVertical_bias="0.724" />
+            app:layout_constraintTop_toBottomOf="@+id/fName"/>
 
         <Button
             android:id="@+id/detailsButton"
             android:layout_width="wrap_content"
-            android:textSize="10dp"
-            android:layout_height="30dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
@@ -67,7 +65,7 @@
             android:background="@drawable/corner_button"
             android:text="Review"
             android:textColor="@color/colorText"
-            android:layout_marginTop="10dp"
+            android:textSize="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

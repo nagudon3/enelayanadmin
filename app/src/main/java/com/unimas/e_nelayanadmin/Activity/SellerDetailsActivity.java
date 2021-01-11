@@ -25,7 +25,7 @@ import com.unimas.e_nelayanadmin.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SellerDetailsActivity extends AppCompatActivity {
-    private TextView fishermanName, fishermanPhone, fishermanLicenseNumber, fishingArea, address, years, approvalStatus;
+    private TextView fishermanName, fishermanPhone, fishermanLicenseNumber, fishingArea, address, approvalStatus, source;
     private CircleImageView fishermanImage;
     private Button approveButton, cancelButton;
 
@@ -43,6 +43,7 @@ public class SellerDetailsActivity extends AppCompatActivity {
         fishermanImage = findViewById(R.id.fishermanImage);
         approveButton = findViewById(R.id.approveBtn);
         cancelButton = findViewById(R.id.cancelBtn);
+        source = findViewById(R.id.sellerSouce);
 
         String fName = getIntent().getExtras().getString("sellerName");
         String fPhone = getIntent().getExtras().getString("phoneNumber");
@@ -52,6 +53,7 @@ public class SellerDetailsActivity extends AppCompatActivity {
         String fAddress = getIntent().getExtras().getString("sellerAddress");
         String fApproval = getIntent().getExtras().getString("approvalStatus");
         String fArea = getIntent().getExtras().getString("sellingArea");
+        String fSource = getIntent().getExtras().getString("sellerSource");
 
         Glide.with(this).load(fImage).into(fishermanImage);
 
@@ -61,7 +63,7 @@ public class SellerDetailsActivity extends AppCompatActivity {
         fishermanLicenseNumber.setText(fLicense);
         fishingArea.setText(fArea);
         address.setText(fAddress);
-
+        source.setText(fSource);
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override

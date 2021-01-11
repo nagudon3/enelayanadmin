@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +28,7 @@ public class FishermanList extends AppCompatActivity {
     private ProgressBar progressBar;
     FishermanAdapter fishermanAdapter;
     ArrayList<Fisherman> fishermanArrayList;
+    private TextView empty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class FishermanList extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+        empty = findViewById(R.id.empty);
         recyclerView = findViewById(R.id.fishermanRV);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fishermanArrayList = new ArrayList<>();
@@ -45,6 +48,7 @@ public class FishermanList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     progressBar.setVisibility(View.INVISIBLE);
+                    empty.setVisibility(View.GONE);
                     for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                         Fisherman fisherman = dataSnapshot1.getValue(Fisherman.class);
                         fishermanArrayList.add(fisherman);
@@ -52,8 +56,8 @@ public class FishermanList extends AppCompatActivity {
                     fishermanAdapter = new FishermanAdapter(FishermanList.this, fishermanArrayList);
                     recyclerView.setAdapter(fishermanAdapter);
                 }else {
-                    Toast.makeText(FishermanList.this, "No request for the moment.", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.INVISIBLE);
+                    empty.setVisibility(View.VISIBLE);
                 }
             }
 

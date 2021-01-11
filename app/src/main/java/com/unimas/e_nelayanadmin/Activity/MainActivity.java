@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
     private ImageButton backButton;
     private ProgressBar progressBar;
+    private Toast backToast;
+    private long backPressedTime;
 
     FirebaseAuth mAuth;
 
@@ -97,5 +99,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return;
+        }else {
+            backToast = Toast.makeText(this, "Tap on back button again to exit.", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 }

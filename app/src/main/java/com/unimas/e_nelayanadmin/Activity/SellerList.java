@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +28,7 @@ public class SellerList extends AppCompatActivity {
     private RecyclerView recyclerView;
     SellerAdapter sellerAdapter;
     ArrayList<Seller> sellerArrayList;
+    private TextView empty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class SellerList extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+        empty = findViewById(R.id.empty);
         recyclerView = findViewById(R.id.sellerRV);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sellerArrayList= new ArrayList<>();
@@ -43,17 +47,22 @@ public class SellerList extends AppCompatActivity {
         fishermanDb.orderByChild("approvalStatus").equalTo(false).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    Seller seller = dataSnapshot1.getValue(Seller.class);
-                    sellerArrayList.add(seller);
+                if (dataSnapshot.exists()){
+                    empty.setVisibility(View.GONE);
+                    for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                        Seller seller = dataSnapshot1.getValue(Seller.class);
+                        sellerArrayList.add(seller);
+                    }
+                    sellerAdapter = new SellerAdapter(SellerList.this, sellerArrayList);
+                    recyclerView.setAdapter(sellerAdapter);
+                }else {
+                    empty.setVisibility(View.VISIBLE);
                 }
-                sellerAdapter = new SellerAdapter(SellerList.this, sellerArrayList);
-                recyclerView.setAdapter(sellerAdapter);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Nothing here!", Toast.LENGTH_SHORT).show();
             }
         });
 
